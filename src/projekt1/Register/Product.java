@@ -1,27 +1,27 @@
-package projekt1;
-
+package projekt1.Register;
+import java.util.ArrayList;
 public class Product {
 
 
-    private String name;
+    private String productName;
     private double price;
-    private double value;
+    private int value;
 
-    public Product(String name){
-        this.name = name;
-        this.price = 0;
-        this.value = value;
-    }
 
-    public Product(String name, double price, double value){
-        this.name = name;
+
+    public Product(String productName, double price, int value){
+        this.productName = productName;
         this.price = price;
         this.value = value;
 
     }
 
-    public String getName(){
-        return name;
+    public String getProductName(){
+        return productName;
+    }
+
+    public void setProductName(String productName) {
+        this.productName = productName;
     }
 
     public double getPrice(){
@@ -36,13 +36,13 @@ public class Product {
         return value;
     }
 
-    public void setValue(double newValue){
+    public void setValue(int newValue){
         this.value=newValue;
     }
 
     public String toString(){
         String s = "Product: " +
-                "ProductName: " + name +
+                "ProductName: " + productName +
                 ", Price: " + price +
                 ", Value:" + value;
         return s;
