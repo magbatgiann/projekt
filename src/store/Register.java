@@ -23,6 +23,12 @@ public class Register {
 
     }
 
+    public static class ValidateInput {
+        public static boolean validateCustomerName(String customerName){
+            return customerName.matches("[A-ZÅÖÄ][a-zA-ZåöäÅÖÄ]*");
+        }
+    }
+
     Customer findCustomer(int customerID) {
         return customerList.get (customerID);
 
@@ -110,21 +116,22 @@ public class Register {
 
     }
 
-    public String getString(String s){
-        System.out.println (s);
-        String textToTest="o";
+    public String getString(String s) {
+            String textToTest = "o";
+        for (int i = 0; i < 5; i++) {
 
-        try {
-            textToTest= scanner.nextLine();
-            Character.isUpperCase(textToTest.codePointAt(0));
-        }catch(InputMismatchException e){
+            System.out.println(s);
 
-            System.out.println("Ooops !! Something went wrong!");
-
+            textToTest = scanner.nextLine();
+            if
+            (!Register.ValidateInput.validateCustomerName(textToTest)) {
+                System.out.println("Format isn't correct. Please try again. Spell with first big letter.");
+            } else {
+                System.out.println("Correct!Go next.");
+                break;
+            }
         }
-
         return textToTest;
-
     }
 
     public int getInt(String s){
