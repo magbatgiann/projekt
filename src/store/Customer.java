@@ -1,10 +1,11 @@
 package store;
 
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Customer  {
-
+public class Customer implements Serializable {
+private final static long serialVersionUID = 4661471824932115886L;
     private String customerName;
     private String customerAddress;
     private  int customerID ;

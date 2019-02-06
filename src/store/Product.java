@@ -1,9 +1,10 @@
 package store;
 
 
+import java.io.Serializable;
 
-
-public class Product  {
+public class Product implements Serializable {
+    private final static long serialVersionUID = 4661471824932115886L;
 
     private String productName;
     private double productPrice;
