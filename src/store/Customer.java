@@ -1,11 +1,23 @@
 package store;
 
-public class Customer {
+
+import java.util.ArrayList;
+
+public class Customer  {
 
     private String customerName;
     private String customerAddress;
     private  int customerID ;
+    ArrayList<Product> orderList = new ArrayList<>();
 
+
+    public void addToOrderList (Product product) {
+        orderList.add (product);
+    }
+
+    public ArrayList<Product> getProductArrayList () {
+        return this.orderList;
+    }
 
 
    public Customer()
@@ -16,7 +28,7 @@ public class Customer {
         this.customerID = customerID;
         this.customerAddress = customerAddress;
         this.customerName = customerName;
-
+        orderList = new ArrayList<Product> ();
 
     }
 

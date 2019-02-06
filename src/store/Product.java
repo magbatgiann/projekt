@@ -1,7 +1,9 @@
 package store;
 
 
-public class Product {
+
+
+public class Product  {
 
     private String productName;
     private double productPrice;
@@ -42,10 +44,6 @@ public class Product {
         this.units = units;
 
     }
-
-
-
-
 
     @Override
     public String toString()

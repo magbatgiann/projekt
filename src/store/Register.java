@@ -1,12 +1,13 @@
 package store;
 import java.util.*;
+import java.util.ArrayList;
 
-public class Register {
+public class Register{
 
     Scanner scanner = new Scanner (System.in);
     HashMap<Integer, Customer> customerList = new HashMap<> ();
     ArrayList<Product> productsList = new ArrayList<> ();
-    ArrayList<Product> orderList = new ArrayList<> ();
+    //ArrayList<Product> orderList = new ArrayList<> ();
     Customer customerChosen;
 
 
@@ -29,32 +30,55 @@ public class Register {
         }
     }
 
+
     Customer findCustomer(int customerID) {
         return customerList.get (customerID);
 
     }
 
 
-    public void displayOrderList() {
+    public String displayOrderList() {
 
-        System.out.println ("You have in your shopping cart: ");
         System.out.println (customerChosen);
-        System.out.println (orderList);
+        System.out.println ("You have in your shopping cart: ");
+        System.out.println (customerChosen.orderList.size () + " items. ");
+        StringBuilder stringBuilder = new StringBuilder ();
+        for (Product product : customerChosen.orderList) {
+            stringBuilder.append (product.toString ());
+            stringBuilder.append ("\n");
+        }
+        return stringBuilder.toString ();
     }
-
-    public void orderAndTotalPrice () {
+    public boolean orderAndTotalPrice () {
 
 
         double totalPrice = 0;
+        if (customerChosen == null)
+            return false;
+        else {
+            for (Product product : customerChosen.orderList) {
+                totalPrice += product.getProductPrice ();
 
-        for (Product product : orderList) {
-            totalPrice = product.getProductPrice ();
-            totalPrice = totalPrice + totalPrice;
+            }
+            System.out.println (displayOrderList ());
+            System.out.println ("Total price: " + totalPrice);
+            return true;
         }
-        System.out.println (customerChosen);
-        displayOrderList();
-        System.out.println ("Total price: " + totalPrice);
     }
+
+
+//    public void orderAndTotalPrice () {
+//
+//
+//        double totalPrice = 0;
+//
+//        for (Product product : orderList) {
+//            totalPrice = product.getProductPrice ();
+//            totalPrice = totalPrice + totalPrice;
+//        }
+//        displayOrderList();
+//        System.out.println ("Total price: " + totalPrice);
+//    }
 
     public void addProduct () {
 
@@ -93,24 +117,52 @@ public class Register {
         customerChosen = customer;
 
     }
-
     public void placeOrder () {
-        System.out.println ("Choose a product by name: ");
+
+        if (customerChosen != null) {
+            System.out.println ("Order for customer: " + customerChosen);
+            int userOption = 0;
+            while (userOption != 3) {
+                System.out.println ("Place an order for this Customer press 1: ");
+                System.out.println ("Switch customer to make an order press 2: ");
+                System.out.println ("Exit to menu press 3: ");
+                userOption = getInt ("Enter your choice: ");
+
+                switch (userOption) {
+                    case 1:
+                        addItemToOrderList ();
+                        break;
+
+                    case 2:
+                        customerChosen.orderList.clear ();
+                        chooseCustomer ();
+                        addItemToOrderList ();
+                        break;
+
+                    default:
+                }
+            }
+        } else
+            addItemToOrderList();
+    }
+    public void addItemToOrderList () {
+
+        System.out.println ("\nChoose a product by name: ");
         System.out.println (displayProduct ());
         String chosenProduct = getString ("Enter the name");
-        for (int i = 0; i < productsList.size (); i++) {
-            if (productsList.get (i).getProductName ().equals (chosenProduct)) {
-                orderList.add (productsList.get (i));
+
+        for (Product product : productsList) {
+            if (product.getProductName ().equals (chosenProduct)) {
+                customerChosen.addToOrderList (product);
             }
         }
-        System.out.println ("Item Added" + orderList);
-
+        System.out.println ("Item Added" + customerChosen.getProductArrayList ());
     }
 
     public void displayCustomer () {
         System.out.println (customerList.size () + " Customers. ");
 
-        for(Map.Entry m:customerList.entrySet()){
+        for(Map.Entry<Integer, Customer> m:customerList.entrySet()){
             System.out.println("ID:"+m.getKey()+" "+m.getValue());
         }
 
@@ -125,17 +177,25 @@ public class Register {
             textToTest = scanner.nextLine();
             if
             (!Register.ValidateInput.validateCustomerName(textToTest)) {
-                System.out.println("Format isn't correct. Please try again. Spell with first big letter.");
+                System.out.println("Wrong format. Please try again!");
             } else {
-                System.out.println("Correct!Go next.");
+                System.out.println("Correct!Next step.");
                 break;
             }
         }
         return textToTest;
     }
-
     public int getInt(String s){
         System.out.println (s);
         return Integer.parseInt (scanner.nextLine ());
     }
+
+
+    public boolean makeOrder (String s) {
+        System.out.println (s);
+        int choice = Integer.parseInt (scanner.nextLine ());
+        return choice == 1;
+
+    }
 }
+

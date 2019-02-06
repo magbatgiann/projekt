@@ -9,7 +9,7 @@ public class Validate {
         String customerName = scanner.nextLine();
         if
         (!Register.ValidateInput.validateCustomerName(customerName)) {
-            System.out.println("wrong format");
+            System.out.println("Format isn't correct. Please try again. Spell with first big letter.");
         } else {
             System.out.println("Correct!");
         }
