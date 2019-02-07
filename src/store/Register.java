@@ -9,7 +9,7 @@ public class Register implements Serializable {
     Scanner scanner = new Scanner(System.in);
     HashMap<Integer, Customer> customerList = new HashMap<>();
     ArrayList<Product> productsList = new ArrayList<>();
-    ArrayList<Product> orderList = new ArrayList<> ();
+    ArrayList<String> orderList = new ArrayList<> ();
     Customer customerChosen;
 
 
@@ -19,13 +19,13 @@ public class Register implements Serializable {
         String customerName = getString("Enter Customer Name: ");
 
         String customerAddress = getString("Enter Customer Address: ");
+
         int customerID = new Random().nextInt(100) + 1;
         Customer customer = new Customer(customerName, customerAddress, customerID);
         customerList.put(customerID, customer);
         System.out.println("Customer Added");
 
     }
-
     public static class ValidateInput {
         public static boolean validateCustomerName(String customerName) {
             return customerName.matches("[A-ZÅÖÄ][a-zA-ZåöäÅÖÄ]*");
@@ -68,20 +68,6 @@ public class Register implements Serializable {
             return true;
         }
     }
-
-
-//    public void orderAndTotalPrice () {
-//
-//
-//        double totalPrice = 0;
-//
-//        for (Product product : orderList) {
-//            totalPrice = product.getProductPrice ();
-//            totalPrice = totalPrice + totalPrice;
-//        }
-//        displayOrderList();
-//        System.out.println ("Total price: " + totalPrice);
-//    }
 
     public void addProduct() {
 
@@ -204,21 +190,7 @@ public class Register implements Serializable {
         return choice == 1;
 
     }
-//
-//    public static void readTextFileFromResources() throws IOException {
-//        try (InputStream inputStream = Register.class.getResourceAsStream("/order.txt")) {
-//            Scanner sc = new Scanner(inputStream);
-//            while (sc.hasNext())
-//                System.out.println(sc.nextLine());
-//        }
-//    }
-//    public static void writeTextFile(File file, String text) {
-//        try (FileWriter fileWriter = new FileWriter(file)) {
-//            fileWriter.write(text);
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//    }
+
         void saveFile (String Order) throws Exception {
         ObjectOutputStream out = new ObjectOutputStream (new FileOutputStream ("Order"));
         out.writeObject (orderList);
@@ -229,9 +201,10 @@ public class Register implements Serializable {
 
         void readFile(String Order) throws Exception {
         ObjectInputStream in = new ObjectInputStream (new FileInputStream ("Order"));
-        orderList = (ArrayList<Product>)in.readObject ();
-       // productsList = (ArrayList<Product>)in.readObject ();
+        orderList = (ArrayList<String>)in.readObject ();
         customerList = (HashMap<Integer, Customer>)in.readObject ();
+        productsList = (ArrayList<Product>)in.readObject ();
+
         in.close ();
     }
 }

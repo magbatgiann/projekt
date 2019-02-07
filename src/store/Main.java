@@ -1,25 +1,20 @@
 package store;
-//import static store.Register.readTextFileFromResources;
-//import static store.Register.writeTextFile;
 
 public class Main {
     private static final String Order = "Order";
 
     public static void main(String[] args) throws Exception {
 
-//        readTextFileFromResources();
-//        File file = new File("C:\\Users\\magda\\Desktop\\Testare2019\\src\\store");
-//        writeTextFile(file, "order.txt");
-
         Register register = new Register();
         register.readFile (Order);
+
         int userOpt = 0;
         while (userOpt != 8) {
             System.out.println("\n");
             System.out.println("* * * * * * * * * * * * *");
             System.out.println("* * *  Main Menu *  * * *");
             System.out.println("* * * * * * * * * * * * *");
-            System.out.println("(1) Enter a customer name with big letter as first: ");
+            System.out.println("(1) Add new customer. Write name with big letter as first: ");
             System.out.println("(2) Add an item to the list with big letter as first. ");
             System.out.println("(3) Display product list:");
             System.out.println("(4) Display customer list: ");

@@ -1,6 +1,4 @@
 package store;
-
-
 import java.io.Serializable;
 
 public class Product implements Serializable {
