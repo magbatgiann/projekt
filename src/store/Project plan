@@ -1,0 +1,27 @@
+Kursnamn: UTVECKLING AV APPLIKATIONER OCH TJANSTER
+Klass: Testare
+Termin: VT 2018
+Namn: Magdalena Batog-Giannako
+
+1. Verktyg : Slack ; Git och Github; InteliJ
+2. Metod: Agile samt TDD
+3. Projekt plan
+Applikation som lagrar kundregister, varulager samt ordrar/varukorgar for varje kund.
+
+
+A. Register:
+	1. Kund ska minst ha ett unikt kundid som ska skapas automatiskt, namn, samt stad.
+Namn ska verifieras sa att man skriver med stor forsta bokstav.
+Varje kund ska kunna ha en eller flera varor.
+som kunden har bestallt.
+   	2. Varor: Name, Typ, Pris.
+B. Klasser och metoder
+	1. Skriva ut en lista med alla kunder
+	2. Skriva ut produkt listan.
+	3. Skriva ut kunder med deras varor och total kostnad for alla dem varorna
+	5. Innan programmet stangs ner ska det spara sin information och sedan lasa in den igen nar programmet
+startar igen
+C.
+	1.Test
+
+

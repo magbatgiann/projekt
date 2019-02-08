@@ -66,7 +66,6 @@ private final static long serialVersionUID = 4661471824932115886L;
     public String toString()
     {
         return " Customer Name: " + customerName +
-                " Customer Address: " + customerAddress +
-                " Customer ID: " + customerID;
+                " Address: " + customerAddress ;
     }
 }

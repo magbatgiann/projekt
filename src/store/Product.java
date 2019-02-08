@@ -47,6 +47,6 @@ public class Product implements Serializable {
     @Override
     public String toString()
     {
-        return productName + ": SEK " + productPrice + " x " + "units -" + units;
+        return productName + ": SEK " + productPrice + " x " + "item/" + units;
     }
 }

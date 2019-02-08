@@ -28,7 +28,7 @@ public class Register implements Serializable {
     }
     public static class ValidateInput {
         public static boolean validateCustomerName(String customerName) {
-            return customerName.matches("[A-ZÅÖÄ][a-zA-ZåöäÅÖÄ]*");
+            return customerName.matches("[A-ZÅÖÄ][a-zåöä]*");
         }
     }
 
