@@ -9,7 +9,7 @@ public class Main {
         register.readFile (Order);
 
         int userOpt = 0;
-        while (userOpt != 8) {
+        while (userOpt != 7) {
             System.out.println("\n");
             System.out.println("* * * * * * * * * * * * *");
             System.out.println("* * *  Main Menu *  * * *");
@@ -20,8 +20,7 @@ public class Main {
             System.out.println("(4) Display customer list: ");
             System.out.println("(5) Place a order: ");
             System.out.println("(6) Print Customer and order. ");
-            //System.out.println("(7) Show order history ");
-            System.out.println("(8) Exit");
+            System.out.println("(7) Exit");
             userOpt = register.getInt("Please select a number option from main menu: ");
 
             switch (userOpt) {
@@ -85,17 +84,7 @@ public class Main {
                         System.out.println("Place Order and choose customer first.");
 
                     break;
-
-//                case 7:
-//                    try {
-//
-//                        System.out.println("All data loaded " + Order);
-//                    }
-//                    catch (Exception e) {
-//                        e.printStackTrace();
-//                    }
-//                  break;
-                case 8:
+                case 7:
                     register.saveFile(Order);
                     System.exit(0);
                 default:
