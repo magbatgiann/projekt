@@ -1,5 +1,4 @@
 package store;
-
 public class Main {
     private static final String Order = "Order";
 
@@ -69,16 +68,16 @@ public class Main {
                 case 6:
                     if (register.orderAndTotalPrice()) {
                         if (register.makeOrder("If you want to make the order: press 1, If you want to go back to main menu please press 2"))
-                       {
+                        {
 
-                           try {
-                               register.saveFile(Order);
-                           }
-                           catch (Exception e) {
-                               e.printStackTrace();
-                           }
-                           System.out.println("Order Saved and send");
-                       } else
+                            try {
+                                register.saveFile(Order);
+                            }
+                            catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                            System.out.println("Order Saved and send");
+                        } else
                             System.out.println("\n");
                     } else
                         System.out.println("Place Order and choose customer first.");

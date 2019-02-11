@@ -7,9 +7,9 @@ public class Register implements Serializable {
     private final static long serialVersionUID = 4661471824932115886L;
 
     Scanner scanner = new Scanner(System.in);
+    ArrayList<String> orderList = new ArrayList<> ();
     HashMap<Integer, Customer> customerList = new HashMap<>();
     ArrayList<Product> productsList = new ArrayList<>();
-    ArrayList<String> orderList = new ArrayList<> ();
     Customer customerChosen;
 
 
@@ -191,7 +191,7 @@ public class Register implements Serializable {
 
     }
 
-        void saveFile (String Order) throws Exception {
+    void saveFile (String Order) throws Exception {
         ObjectOutputStream out = new ObjectOutputStream (new FileOutputStream ("Order"));
         out.writeObject (orderList);
         out.writeObject (customerList);
@@ -199,12 +199,11 @@ public class Register implements Serializable {
         out.close ();
     }
 
-        void readFile(String Order) throws Exception {
+    void readFile(String Order) throws Exception {
         ObjectInputStream in = new ObjectInputStream (new FileInputStream ("Order"));
-        orderList = (ArrayList<String>)in.readObject ();
-        customerList = (HashMap<Integer, Customer>)in.readObject ();
-        productsList = (ArrayList<Product>)in.readObject ();
-
+        orderList = (ArrayList<String>)in.readObject();
+        customerList = (HashMap<Integer, Customer>)in.readObject();
+        productsList = (ArrayList<Product>)in.readObject();
         in.close ();
     }
 }
