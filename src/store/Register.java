@@ -26,11 +26,11 @@ public class Register implements Serializable {
         System.out.println("Customer Added");
 
     }
-    public static class ValidateInput {
-        public static boolean validateCustomerName(String customerName) {
+    //public static class ValidateInput {
+        public boolean validateCustomerName(String customerName) {
             return customerName.matches("[A-ZÅÖÄ][a-zåöä]*");
         }
-    }
+
 
 
     Customer findCustomer(int customerID) {
@@ -168,7 +168,7 @@ public class Register implements Serializable {
 
             textToTest = scanner.nextLine();
             if
-            (!Register.ValidateInput.validateCustomerName(textToTest)) {
+            (!validateCustomerName(textToTest)) {
                 System.out.println("Wrong format. Please try again!");
             } else {
                 System.out.println("Correct!Next step.");
